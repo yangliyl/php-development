@@ -1,0 +1,38 @@
+version: '3'
+services:
+  php-fpm:
+    build: ./php-fpm
+    volumes:
+      - ./code:/usr/share/nginx/html
+    networks:
+      - develop-network
+
+  nginx:
+    image: nginx:1.15.5-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./code:/usr/share/nginx/html:ro
+    networks:
+      - develop-network
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    networks:
+      - develop-network
+
+  redis:
+    image: redis:5.0.0-alpine
+    volumes:
+      - ./redis/data:/data
+    networks:
+      - develop-network
+
+networks:
+  develop-network:
+    driver: bridge
