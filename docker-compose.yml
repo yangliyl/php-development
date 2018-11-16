@@ -18,7 +18,7 @@ services:
       - develop-network
 
   mysql:
-    image: mysql:8.0
+    image: mysql:5.7.24
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
