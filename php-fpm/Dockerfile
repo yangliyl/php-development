@@ -6,4 +6,4 @@ RUN pecl bundle -d /usr/src/php/ext redis-$REDIS_VERSION \
   && pecl bundle -d /usr/src/php/ext swoole-$SWOOLE_VERSION \
   && rm -rf /usr/src/php/ext/redis-$REDIS_VERSION.tgz \
   && rm -rf /usr/src/php/ext/swoole-$SWOOLE_VERSION.tgz \
-  && docker-php-ext-install mysqli pdo_mysql redis swoole
+  && docker-php-ext-install mysqli pdo_mysql redis swoole bcmath
