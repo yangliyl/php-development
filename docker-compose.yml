@@ -6,6 +6,7 @@ services:
       - ./code:/usr/share/nginx/html
     networks:
       - develop-network
+    restart: always
 
   nginx:
     image: nginx:1.15.5-alpine
@@ -16,6 +17,7 @@ services:
       - ./code:/usr/share/nginx/html:ro
     networks:
       - develop-network
+    restart: always
 
   mysql:
     image: mysql:5.7.24
@@ -25,6 +27,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
     networks:
       - develop-network
+    restart: always
 
   redis:
     image: redis:5.0.0-alpine
@@ -32,6 +35,7 @@ services:
       - ./redis/data:/data
     networks:
       - develop-network
+    restart: always
 
 networks:
   develop-network:
